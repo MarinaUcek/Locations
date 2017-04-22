@@ -1,0 +1,2383 @@
+/* 
+00.General rules 
+01.Page-header Section
+	01.01.Primary nav
+		01.01.01.Mega menu
+	01.02.Secondary nav
+	01.03.Add listing button
+	01.04.Button - Toggle primary-nav
+	01.05.Nav-btn-only on screen max-width: 898px 
+02.Page-content Section
+	02.01.Hero Section
+		02.01.01.Google map Section
+			02.01.01.01.Marker location (richmarker plugin)
+			02.01.01.02.Marker location Infobox (infobox plugin)
+		02.01.02.Form Section
+			02.01.02.01.Simple input fileds
+			02.01.02.02.Select fields (bootstrap-select plugin)
+			02.01.02.03.Date input (bootstrap datepicker plugin)
+			02.01.02.04.Submitt button
+			02.01.02.05.Checkboxes (iCheck plugin)
+			02.01.02.06.Price slider (noUiSlider plugin)
+	02.02.Recent Places Section
+			02.02.01.Section Title
+			02.02.02.Items Section
+			02.02.03."View all" button
+	02.03.Category Section
+	02.04.Subscribe Section
+	02.05.Gallery Section
+		02.05.01.Section Title and Gallery Navigation
+		02.05.02.Gallery Items Section (slick plugin)
+	02.06.Events Section
+	02.07.Testimonials Section (slick plugin)
+	02.08.Blog Section
+	02.09.Logo Section
+03.Page-footer Section
+	03.01.Social networks Section
+	03.02.Footer navigation Section
+04.Media queries
+*/
+
+/* <<<<<<<<<<<<< 00.General rules >>>>>>>>>>>>> */
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height:  100%;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	color: #1f1f1f;
+	position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+
+a {
+	color: #4611a7;
+	text-decoration: none;
+	transition: 0.2s ease-in-out;
+	transform: translateZ(0);
+	transform-style: preserve-3d;
+}
+
+a:hover, a:focus, a:active {
+	color: #000;
+	outline: none;
+	text-decoration: none;
+}
+
+.btn {
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 0;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	transform: translateY(0);
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.btn.btn-default {
+	color: #000;
+	background-color: #fff;
+	border-color: #fff;
+}
+
+.btn.btn-primary {
+	color: #fff;
+	background-color: #4611a7;
+	border-color: #4611a7;
+}
+
+.btn.btn-primary:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background-color: transparent;
+	transition: 0.3s ease;
+}
+
+.btn.btn-primary:hover:after {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 30px;
+}
+
+.btn.btn-rounded {
+	border-radius: 30px;
+}
+
+a.back-to-top {
+	width: 50px;
+	height: 50px;
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	color: #fff;
+	background-color: #1f1f1f;
+	border-radius: 50%;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+	position: fixed;
+	z-index: 999;
+	right: 30px;
+	bottom: 20px;
+	display: none;
+	transition: 0.3s ease;
+}
+
+hr {
+	margin: 30px 0;
+}
+/* ============= 00.General rules ends ============= */
+
+/* <<<<<<<<<<<<< 01.Page-header Section >>>>>>>>>>>>>>> */
+#page-header nav {
+	display: table;
+	width: 100%;
+	background-color: #fafafa;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+	padding: 6px 7px;
+	position: relative;
+	z-index: 999;
+	white-space: nowrap;
+}
+
+#page-header .left,
+#page-header .right {
+	display: table-cell;
+}
+
+#page-header .right {
+	text-align: right;
+	position: relative;
+}
+
+#page-header .right .primary-nav,
+#page-header .right .secondary-nav {
+	display: inline-block;
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+	margin-right: 15px;
+	padding-right: 15px;
+}
+	
+/* <<<<<<<<<<<<< 01.01.Primary nav >>>>>>>>>>>>>> */
+#page-header .right .primary-nav ul.navigation {
+	list-style-type: none;
+	margin-bottom: 0;
+	padding-left: 15px;
+}
+
+#page-header .right .primary-nav ul.navigation li {
+	display: inline-block;
+	text-align: left;
+	position: relative;
+}
+
+#page-header .right .primary-nav a:not(.btn),
+#page-header .right .secondary-nav a:not(.btn) {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: bold;
+	color: #1f1f1f;
+	text-transform: uppercase;
+	border: 2px solid transparent;
+	border-radius: 30px;
+	padding: 4px 6px;
+	opacity: 0.9;
+}
+
+#page-header .right .primary-nav a:not(.btn):hover,
+#page-header .right .secondary-nav a:not(.btn):hover {
+	color: #4611a7;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child > a {
+	padding-left: 10px;
+	padding-right: 20px;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child > a:before,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper [class*="col-"] > a:before {
+	content: "";
+	width: 0;
+	height: 0;
+	border-width: 5px 3px 0 3px;
+	border-style: solid;
+	border-color: rgba(31, 31, 31, 0.5) transparent transparent transparent;
+	opacity: 1;
+	position: absolute;
+	top: 44%;
+	right: 5px;
+	transition: 0.3s ease;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child:hover > a:before {
+	border-color: rgba(31, 31, 31, 1) transparent transparent transparent;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child ul li > a:before {
+	border-width: 3px 0 3px 5px;
+	border-color: transparent transparent transparent rgba(31, 31, 31, 0.5);
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child ul li:hover > a:before {
+	border-color: transparent transparent transparent rgba(31, 31, 31, 1);
+}
+
+#page-header .right .primary-nav ul.navigation li.active > a {
+	color: #4611a7;
+	border: 2px solid rgba(0, 0, 0, 0.2);
+	opacity: 1;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child .wrapper {
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	transform: translateY(5px);
+	z-index: 1;
+	transition: 0.3s ease;
+	pointer-events: none;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child:hover .wrapper {
+	transform: translateY(0);
+	opacity: 1;
+	pointer-events: auto;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child .wrapper > .nav-wrapper,
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper {
+	min-width: 150px;
+	box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+	margin-top: 10px;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child ul {
+	padding-left: 0;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child ul li {
+	display: block;
+	white-space: nowrap;
+	background-color: #fff;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	transition: 0.3s ease;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child ul li:hover {
+	background-color: #f2f2f2;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child .wrapper > .nav-wrapper > ul > li:first-child {
+	position: relative;
+}
+
+#page-header .right .primary-nav ul.navigation li.has-child .wrapper > .nav-wrapper > ul > li:first-child:after {
+	content: "";
+	width: 0;
+	height: 0;
+	border-width: 0 5px 8px 5px;
+	border-style: solid;
+	border-color: transparent transparent #fff transparent;
+	opacity: 1;
+	position: absolute;
+	top: -6px;
+	left: 12px;
+	transition: 0.3s ease;
+}
+
+#page-header .right .primary-nav ul.navigation li ul li a {
+	display: block;
+	padding: 6px 8px;
+}
+
+#page-header .right .primary-nav ul.navigation li ul li > .nav-wrapper {
+	opacity: 0;
+	min-width: 150px;
+	background-color: #fff;
+	box-shadow: 0 3px 15px rgba(0, 0, 0, 0.33);
+	position: absolute;
+	top: 0;
+	transform: translateX(100%);
+	z-index: 1;
+	transition: 0.3s ease;
+	pointer-events: none;
+}
+
+#page-header .right .primary-nav ul.navigation li ul li:hover > .nav-wrapper {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+/* <<<<<<<<<<<<<<< 01.01.01.Mega menu >>>>>>>>>>>>>>>> */
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent {
+	/* overwrites relative position defined for all li, and sets to static position */
+	position: initial;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper {
+	right: 0 !important;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu {
+	position: absolute;
+	right: -7px;
+	top: -3px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent:hover .wrapper .mega-menu {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper {
+	background-color: #fff;
+	transition: 0.3s ease;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper .container {
+	padding: 30px 0 30px 30px;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper .container .row {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper .container .row [class*="col-"] {
+	display: table;
+	height: 100%;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper [class*="col-"] > a {
+	text-transform: initial;
+	border: none;
+	display: block;
+	padding: 0;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper h4 {
+	font-size: 14px;
+	font-weight: bold;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	margin-top: 0;
+	margin-bottom: 10px;
+	padding-bottom: 15px;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper ul li {
+	border: none;
+	background-color: transparent;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper ul li a {
+	padding: 3px 0;
+}
+
+#page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper .submit {
+	display: table;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background-color: #000;
+	opacity: 0.4;
+}
+
+.btn.btn-default.btn-framed {
+	color: #fff;
+	background-color: transparent;
+	box-shadow: none;
+	z-index: 1;
+}
+
+.btn.btn-default.btn-framed:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+/* ============= 01.01.01.Mega menu ends ============= */
+/* ============= 01.01.Primary nav ends ============= */
+
+/* <<<<<<<<<<<<<< 01.02.Secondary nav >>>>>>>>>>>>>>>> */
+#page-header .right .secondary-nav {
+	margin-right: 10px;
+}
+
+#page-header .right .secondary-nav a:not(.btn).promoted {
+	font-weight: 800;
+	color: #4611a7;
+}
+/* ============= 01.02.Secondary nav ends ============= */
+
+/* <<<<<<<<<<<<< 01.03.Add listing button >>>>>>>>>>>>> */
+#page-header .right .btn.btn-primary.btn-rounded {
+	padding: 3px 8px;
+}
+
+#page-header .right .btn.btn-primary.btn-rounded i {
+	margin-right: 5px;
+}
+/* ============= 01.03.Add listing button ends ============= */
+
+/* <<<<<<<<<<<<< 01.04.Button - Toggle primary-nav >>>>>>>>>>>>>>> */
+#page-header .right .nav-btn {
+	display: none;
+	height: 28px;
+	position: absolute;
+	top: -2px;
+	bottom: 0;
+	right: 0;
+	background-color: transparent;
+	box-shadow: inset 0	0	0	2px rgba(0, 0, 0, 0.4);
+	border-radius: 3px;
+	margin: auto;
+	padding: 8px;
+	transition: 0.3s ease;
+	cursor: pointer;
+}
+
+#page-header .right .nav-btn:hover,
+#page-header .right .nav-btn.active {
+	background-color: #4611a7;
+}
+
+#page-header .right .nav-btn i {
+	display: block;
+	height: 2px;
+	width: 12px;
+	background-color: #4611a7;
+	margin-bottom: 2px;
+	transition: 0.3s ease;
+}
+
+#page-header .right .nav-btn i:last-child {
+	width: 10px;
+}
+
+#page-header .right .nav-btn:hover i,
+#page-header .right .nav-btn.active i {
+	background-color: #fff;
+}
+
+#page-header .right .nav-btn:hover i:last-child,
+#page-header .right .nav-btn.active i:last-child {
+	width: 12px;
+}
+/* ============= 01.04.Button - Toggle primary-nav ends ============= */
+
+/* <<<<<<<<<<<<< 01.05.Nav-btn-only on screen max-width: 898px >>>>>>>>>>>>>> */
+body.nav-btn-only #page-header .right .primary-nav {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: #4611a7;
+	border: 0;
+	border-radius: 3px;
+	box-shadow: 0 3px 15px rgba(0, 0, 0, 0.33);
+	margin-top: 6px;
+	margin-right: 0;
+	padding-right: 0;
+}
+
+body.nav-btn-only #page-header .right .primary-nav {
+	display: none !important;
+	transform: translateY(5px);
+	transition: 0.2s transform;
+}
+
+body.nav-btn-only #page-header .right .primary-nav.showMe {
+	display: block !important;
+	transform: translateY(0);
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation {
+	min-width: 220px;
+	padding-left: 0;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul li {
+	display: block;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	transition: 0.3s ease;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul li.mega-menu-parent .wrapper .mega-menu  {
+	background-color: rgba(0, 0, 0, 0.1);
+	right: 0;
+	top: 0;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.active,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation > li:first-child:after {
+	content: "";
+	width: 0;
+	height: 0;
+	border-width: 0 5px 8px 5px;
+	border-style: solid;
+	border-color: transparent transparent #4611a7 transparent;
+	z-index: 1;
+	position: absolute;
+	top: -6px;
+	right: 10px;
+	transition: 0.3s ease;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.has-child ul li > a:before {
+	border-width: 5px 3px 0 3px;
+}
+
+body.nav-btn-only #page-header .right .primary-nav a:not(.btn),
+body.nav-btn-only #page-header .right .primary-nav a:not(.btn):hover {
+	display: block;
+	font-weight: 800;
+	color: #fff;
+	border: none;
+	padding: 10px;
+	position: relative;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.active > a {
+	color: #fff;
+	border: none;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.has-child > a:before,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper [class*="col-"] > a:before {
+	border-color: rgba(255, 255, 255, 0.5) transparent transparent transparent;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.has-child:hover > a:before,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper [class*="col-"] > a:hover:before {
+	border-color: rgba(255, 255, 255, 1) transparent transparent transparent;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.has-child:hover .wrapper,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li ul li:hover > .nav-wrapper,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent:hover .wrapper .mega-menu {
+	/* Resets a:hover event window width > 898px */
+	opacity: 0;
+}
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.has-child .wrapper,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li ul li > .nav-wrapper,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper {
+	transform: none;
+	transition: none;
+	background-color: transparent;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.has-child .wrapper.showMe,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li ul li > .nav-wrapper.showMe,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu.showMe,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper ul.list-wrapper.showMe {
+	opacity: 1;
+	position: relative;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.has-child .wrapper > .nav-wrapper,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper {
+	box-shadow: none;
+	margin-top: 0;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper .container {
+	padding: 0;
+	width: 220px;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper .container .row {
+	margin-left: 0;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper .container .row [class*="col-"] {
+	display: block;
+	width: 100%;
+	padding: 0;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper ul.list-wrapper {
+	position: absolute;
+	opacity: 0;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper h4,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper ul li {
+	font-size: 11px;
+	line-height: 14px;
+	text-transform: uppercase;
+	margin-bottom: 0;
+	padding: 10px 20px 10px 10px;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper ul li {
+	line-height: 9px;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul li .nav-wrapper ul,
+body.nav-btn-only #page-header .right .primary-nav ul li .nav-wrapper ul li:hover,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper h4:hover,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper ul li:hover {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul li .nav-wrapper ul li,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper [class*="col-"] > a,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper ul li {
+	background-color: transparent;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 0;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul li .nav-wrapper ul li:first-child,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper [class*="col-"]:first-child > a,
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper ul li:first-child  {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.has-child .wrapper > .nav-wrapper > ul > li:first-child:after {
+	border: none;
+}
+
+body.nav-btn-only #page-header .right .primary-nav ul.navigation li.mega-menu-parent .wrapper .mega-menu .nav-wrapper .submit {
+	height: 38px;
+	background: url("../img/10.jpg") no-repeat top center;
+	background-size: cover;
+	opacity: 1;
+}
+
+body.nav-btn-only .mega-menu-parent .btn.btn-default.btn-framed {
+	font-weight: 800;
+	background: rgba(0, 0, 0, 0.4);
+	border: none;
+	width: 100%;
+	height: 100%;
+	line-height: 25px;
+}
+
+body.nav-btn-only .mega-menu-parent .btn.btn-default.btn-framed:hover {
+	background: rgba(0, 0, 0, 0.6);
+}
+/* ============= 01.05.Nav-btn-only on screen max-width: 898px ends ========== */
+	
+/* <<<<<<<<<<<<< 02.Page-content Section >>>>>>>>>>>>>> */
+#page-content {
+	position: relative;
+	overflow: hidden;
+}
+
+/* <<<<<<<<<<<< 02.01.Hero Section >>>>>>>>>>>>>> */
+.hero-section {
+	position: relative;
+}
+
+/* <<<<<<<<<<<< 02.01.01.Google map Section >>>>>>>>>>>>> */
+.hero-section .map-wrapper {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: inline-block;
+}
+
+.hero-section .map-wrapper .geo-location {
+	position: absolute;
+	z-index: 1;
+	top: 20px;
+	right: 20px;
+	height: 30px;
+	width: 30px;
+	font-size: 18px;
+	text-align: center;
+	line-height: 30px;
+	color: #fff;
+	background-color: #4611a7;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	transition: 0.3s ease;
+	cursor: pointer;
+}
+
+.hero-section .map-wrapper .geo-location:hover {
+	color: #4611a7;
+	background-color: #fff;
+}
+
+.hero-section .map-wrapper #map {
+	height: 600px;
+	width: 100%;
+}
+
+/* <<<<<<<<<<<< 02.01.01.01.Marker location (richmarker plugin) >>>>>>>>>>>>> */
+.hero-section .map-wrapper #marker {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.hero-section .map-wrapper #marker:after {
+	content: "";
+	position: absolute;
+	z-index: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 14px;
+	height: 4px;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.3);
+	margin: auto;
+	transform: scale(0.7, 0.7);
+	transition: 0.3s ease;
+}
+
+.hero-section .map-wrapper #marker:hover:after {
+	transform: scale(1, 1);
+}
+
+.hero-section .map-wrapper #marker .title {
+	position: absolute;
+	left: 50px;
+	top: 5px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 11px;
+	white-space: nowrap;
+	padding: 2px 4px;
+	background-color: #fff;
+	border-radius: 1px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+	transform: translateX(10px);
+	transition: 0.3s ease;
+	pointer-events: none;
+}
+
+.hero-section .map-wrapper #marker:hover .title {
+	transform: translateX(0);
+}
+
+.hero-section .map-wrapper #marker .title:before {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: -6px;
+	top: 2px;
+	bottom: 0;
+	border-style: solid;
+	border-width: 4px 6px 4px 0;
+	border-color: transparent rgba(0, 0, 0, 0.2) transparent transparent;
+	margin: auto;
+}
+
+.hero-section .map-wrapper #marker .title:after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: -6px;
+	top: 0;
+	bottom: 0;
+	border-style: solid;
+	border-width: 4px 6px 4px 0;
+	border-color: transparent #fff transparent transparent;
+	margin: auto;
+}
+
+.hero-section .map-wrapper #marker .marker-wrapper {
+	position: relative;
+	width: 37px;
+	height: 49px;
+	transform-style: preserve-3d;
+	transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+}
+
+.hero-section .map-wrapper #marker:hover .marker-wrapper {
+	transform: rotateY(180deg) translateY(-4px);
+}
+
+.hero-section .map-wrapper #marker .marker-wrapper:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 37px;
+	height: 37px;
+	border-radius: 100%;
+	background-color: #4611a7;
+}
+
+.hero-section .map-wrapper #marker .marker-wrapper .tag {
+	backface-visibility: hidden;
+	position: absolute;
+	z-index: -1;
+	top: -3px;
+	right: -1px;
+	width: 19px;
+	height: 19px;
+	font-size: 9px;
+	line-height: 18px;
+	text-align: center;
+	color: #fff;
+	background-color: #4611a7;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	border-radius: 100%;
+	transform: translateZ(3px);
+	transform-style: preserve-3d;
+}
+
+.hero-section .map-wrapper #marker .marker-wrapper .tag i {
+	transform: translateZ(2px);
+	transform-style: preserve-3d;
+}
+
+.hero-section .map-wrapper #marker .marker-wrapper .pin {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 37px;
+	height: 37px;
+	border: 2px solid #4611a7;
+	border-radius: 100%;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 0 0 2px #fff;
+	background-size: cover;
+	transform-style: preserve-3d;
+}
+
+.hero-section .map-wrapper #marker .marker-wrapper .pin:before {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: -2px;
+	left: -2px;
+	width: 37px;
+	height: 37px;
+	border: 2px solid #4611a7;
+	border-radius: 100%;
+	background-color: #4611a7;
+	box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.3);
+	transform: translateZ(-2px);
+}
+
+.hero-section .map-wrapper #marker .marker-wrapper .pin .image {
+	position: relative;
+	z-index: 2;
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	border-radius: 100%;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 0 0 2px #fff;
+}
+
+.hero-section .map-wrapper #marker .marker-wrapper .pin .image:after {
+	content: "";
+	position: absolute;
+	bottom: -8px;
+	left: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 4px 0 4px;
+	border-color: #4611a7 transparent transparent transparent;
+	margin: auto;
+}
+
+.hero-section .map-wrapper #marker .marker-wrapper .search {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 37px;
+	height: 37px;
+	font-family: "fontawesome";
+	font-size: 14px;
+	line-height: 34px;
+	text-align: center;
+	color: #fff;
+	transform: translateZ(-4px);
+}
+/* ========== 02.01.01.01.Marker location (richmarker plugin) ends =========== */
+
+/* <<<<<<<<< 02.01.01.02.Marker location Infobox (infobox plugin) >>>>>>>>>>>> */
+.infobox-wrapper {
+	position: absolute;
+	width: 270px;
+	opacity: 0;
+	transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+}
+
+.infobox-wrapper.show {
+	opacity: 1;
+}
+
+.infobox-wrapper > img {
+	z-index: 1;
+	position: absolute !important;
+	right: -15px;
+	top: -15px;
+	transform: scale(0);
+	transition: 0.3s ease;
+}
+
+.infobox-wrapper.show > img {
+	transform: scale(1);
+}
+
+.infobox-wrapper .infobox {
+	width: 270px;
+}
+
+.item {
+	position: relative;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	margin-bottom: 30px;
+	transform-style: preserve-3d;
+}
+
+.item > a {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	height: 220px;
+}
+
+.infobox-wrapper .item > a {
+	border-radius: 4px;
+	box-shadow: 0 3px 15px rgba(0, 0, 0, 0.33);
+	transform: translateY(15px);
+	transform-style: preserve-3d;
+	transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+}
+
+.infobox-wrapper.show .item > a {
+	transform: translateY(0);
+}
+
+.item > a .description {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	color: #fff;
+	transition: 0.3s ease;
+}
+
+.item > a:hover .description {
+	transform: translateY(-3px);
+}
+
+.infobox-wrapper .item > a .description {
+	opacity: 0;
+	z-index: 1;
+	bottom: 40px;
+	padding-right: 20px;
+	transform: translateX(-10px);
+	transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+}
+
+.infobox-wrapper .item > a:hover .description {
+	transform: none;
+}
+
+.infobox-wrapper.show .item > a .description {
+	opacity: 1;
+	transform: translateX(0);
+	transition-delay: 0.1s;
+}
+
+.item > a .description .label {
+	font-size: 9px;
+	font-weight: 800;
+	text-transform: uppercase;
+	background-color: #4611a7;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.item > a .description h3 {
+	font-size: 21px;
+	font-weight: bold;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+
+.infobox-wrapper .item > a .description h3 {
+	font-size: 18px;
+}
+
+.item > a .description h4 {
+	font-size: 14px;
+	font-weight: normal;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+	margin: 0;
+}
+
+.infobox-wrapper .item > a .description h4 {
+	font-size: 12px;
+}
+
+.item > a .image {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	transform: scale(1.01, 1.01);
+	transition: 0.6s ease;
+}
+
+.infobox-wrapper .item > a .image {
+	background-position: 50% 50%;
+}
+
+.item > a:hover .image {
+	transform: scale(1.1, 1.1);
+}
+
+.item > a .image:after {
+	opacity: 0.7;
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	background: linear-gradient(to bottom, transparent 0%, black 100%);
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.infobox-wrapper .item .rating {
+	display: inline-block;
+	opacity: 0;
+	position: absolute;
+	bottom: 15px;
+	left: 20px;
+	color: #fff;
+	transform: translateX(-10px);
+	transition: 0.5s cubic-bezier(0, 0.28, 0.45, 1.01);
+}
+
+.infobox-wrapper.show .item .rating {
+	opacity: 1;
+	transform: translateX(0);
+	transition-delay: 0.2s;
+}
+
+.infobox-wrapper .item .rating .stars {
+	margin-right: 2px;
+}
+
+.infobox-wrapper .item .rating .stars i {
+	opacity: 0.1;
+	font-size: 11px;
+	color: #fff;
+	margin-right: 1px;
+}
+
+.infobox-wrapper .item .rating .stars i.active {
+	opacity: 1;
+}
+
+.item .rating .reviews {
+	opacity: 0.5;
+	font-size: 11px;
+}
+
+.item .rating .reviews:before {
+	content: "(";
+}
+
+.item .rating .reviews:after {
+	content: ")";
+}
+
+.item .controls-more {
+	height: 27px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 15px;
+	font-size: 18px;
+	margin: auto;
+	padding: 1px 5px;
+	cursor: pointer;
+}
+
+.infobox-wrapper .item .controls-more {
+	top: inherit;
+	bottom: 10px;
+}
+
+.item .controls-more i {
+	opacity: 0.3;
+	color: #000;
+	transition: 0.3s ease;
+}
+
+.infobox-wrapper .item .controls-more i {
+	opacity: 0.6;
+	color: #fff;
+}
+
+.item .controls-more:hover i {
+	opacity: 1;
+	color: #4611a7;
+}
+
+.infobox-wrapper .item .controls-more:hover i {
+	color: #fff;
+}
+
+.item .controls-more ul {
+	list-style-type: none;
+	opacity: 0;
+	position: absolute;
+	bottom: 25px;
+	right: 8px;
+	font-size: 14px;
+	text-align: right;
+	background-color: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	padding-left: 0;
+	transform: translateY(5px);
+	transition: 0.3s ease;
+}
+
+.item .controls-more.show ul {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.item .controls-more ul li {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.item .controls-more ul li:last-child {
+	border-bottom: none;
+}
+
+.item .controls-more ul li:last-child a:before {
+	content: "";
+	position: absolute;
+	bottom: -14px;
+	right: -2px;
+	height: 11px;
+	width: 11px;
+	border-style: solid;
+	border-width: 0 15px 14px 0;
+	border-color: transparent rgba(0, 0, 0, 0.05) transparent transparent;
+	transition: 0.3s ease;
+}
+
+.item .controls-more ul li:last-child a:after {
+	content: "";
+	position: absolute;
+	bottom: -10px;
+	right: 0;
+	height: 11px;
+	width: 11px;
+	border-style: solid;
+	border-width: 0 11px 11px 0;
+	border-color: transparent #fff transparent transparent;
+	transition: 0.3s ease;
+}
+
+.item .controls-more ul li:last-child a:hover:after {
+	border-color: transparent #e8e8e8 transparent transparent;
+}
+
+.item .controls-more ul li a {
+	display: block;
+	line-height: 20px;
+	color: #1f1f1f;
+	white-space: nowrap;
+	padding: 7px 10px;
+}
+
+.infobox-wrapper .item .controls-more ul li a {
+	line-height: 17px;
+}
+
+.item .controls-more ul li a:hover {
+	background-color: #e8e8e8;
+}
+/* ======== 02.01.01.02.Marker location Infobox (infobox plugin) ends ========== */
+/* ======== 02.01.01.Google map Section ends =========== */
+
+/* <<<<<<<<<<<<<< 02.01.02.Form Section >>>>>>>>>>>>>>>> */
+.hero-section #form {
+	position: absolute;
+	z-index: 20;
+	bottom: 0;
+	height: 0;
+	width: 100%;
+}
+
+.hero-section #form .container,
+.hero-section #form .container .row  {
+	height: inherit;
+}
+.hero-section #form .container .row > [class*="col-"] {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.hero-section #form form {
+	display: table;
+	position: relative;
+	bottom: 40px;
+	transform: translateY(-100%);
+	transform-style: preserve-3d;
+	width: 100%;
+	height: 100%;
+	background-color: #4611a7;
+	box-shadow: 0 3px 15px rgba(0, 0, 0, 0.33);
+	padding: 20px 25px 5px;
+}
+
+/* <<<<<<<<< Placeholder color setup >>>>>>>>>> */
+.hero-section #form form ::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+.hero-section #form form ::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+.hero-section #form form :-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+/* ========= Placeholder color setup ends ========== */
+
+.hero-section .form-control {
+	height: auto;
+}
+
+/* <<<<<<<<<<< 02.01.02.01.Simple input fileds >>>>>>>>>>>>> */
+.hero-section #form input[type="text"] {
+	font-size: 14px;
+	font-weight: 400;
+	color: #fff;
+	background-color: #4611a7;
+	box-shadow: inset 0 0 0 30px rgba(0, 0, 0, 0.23);
+	outline: none;
+	border: none;
+	border-radius: 0;
+	padding: 12px;
+	transition: 0.3s ease;
+	transform-style: preserve-3d;
+}
+
+.hero-section #form input[type="text"]:hover,
+.hero-section #form input[type="text"]:focus {
+	box-shadow: inset 0 0 0 30px rgba(0, 0, 0, 0.4);
+}
+/* ============ 02.01.02.01.Simple input fileds ends ============= */
+
+/* <<<<<<<<<<<< 02.01.02.02.Select fields (bootstrap-select plugin) >>>>>>>>>>> */
+.hero-section .bootstrap-select .btn {
+	position: relative;
+	font-size: 14px;
+	text-transform: none;
+	color: #fff;
+	background-color: #4611a7;
+	border: none;
+	border-radius: 0;
+	outline: none !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	padding: 12px;
+	transition: 0.3s ease;
+}
+
+.hero-section .bootstrap-select .btn:hover,
+.hero-section .bootstrap-select .btn:active,
+.hero-section .bootstrap-select .btn:focus {
+	color: #fff;
+	background-color: #4611a7;
+}
+
+.hero-section .bootstrap-select .btn:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.2);
+	transition: 0.3s ease;
+}
+
+.hero-section .bootstrap-select .btn:active:after,
+.hero-section .bootstrap-select .btn:focus:after,
+.hero-section .bootstrap-select .btn:hover:after {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hero-section .bootstrap-select > .dropdown-toggle.bs-placeholder {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-section .bootstrap-select .dropdown-menu {
+	opacity: 0;
+	border: none;
+	border-radius: 0;
+	margin-top: -1px;
+	padding: 0;
+	transform: scale(0.98);
+	transition: 0.3s ease;
+	pointer-events: none;
+}
+
+.hero-section .bootstrap-select.open .dropdown-menu {
+	opacity: 1;
+	transform: scale(1);
+	pointer-events: auto;
+}
+
+.hero-section .bootstrap-select .dropdown-menu > li > a {
+	outline: none;
+	padding: 5px 12px;
+}
+/* =========== 02.01.02.02.Select fields (bootstrap-select plugin) ends ======== */
+
+/* <<<<<<<<<<< 02.01.02.03.Date input (bootstrap datepicker plugin) >>>>>>>>>>> */
+.datepicker {
+	border: none;
+	border-radius: 0;
+	padding: 5px;
+}
+
+.datepicker .glyphicon {
+	opacity: 0.6;
+	color: #4611a7;
+	transition: 0.3s ease;
+	cursor: pointer;
+}
+
+.datepicker .next {
+	text-align: right;
+}
+
+.datepicker .datepicker-switch {
+	opacity: 0.6;
+	font-size: 12px;
+	text-align: center;
+	font-weight: normal;
+	text-transform: uppercase;
+	padding: 6px;
+}
+
+.datepicker .day {
+	text-align: center;
+	border-radius: 2px;
+	padding: 5px 8px;
+	transition: 0.3s ease;
+	cursor: pointer;
+}
+
+.datepicker .month,
+.datepicker .year,
+.datepicker .decade,
+.datepicker .century {
+	display: inline-block;
+	border-radius: 2px;
+	margin: 5px;
+	padding: 5px 8px;
+	transition: 0.3s ease;
+	cursor: pointer;
+}
+
+.datepicker .day:hover,
+.datepicker .month:hover,
+.datepicker .year:hover,
+.datepicker .decade:hover,
+.datepicker .century:hover {
+	color: #fff;
+	background-color: #4611a7;
+}
+
+.datepicker .old,
+.datepicker .new,
+.datepicker .disabled {
+	color: rgba(0, 0, 0, 0.3);
+	pointer-events: none;
+}
+
+.datepicker .today,
+.datepicker .focused {
+	color: #fff;
+	background-color: #1f1f1f;
+}
+/* =========== 02.01.02.03.Date input (bootstrap-datepicker plugin) ends =========== */
+
+/* <<<<<<<<<<<<<<<< 02.01.02.04.Submitt button >>>>>>>>>>>>>>> */
+.hero-section #form .btn[type="submit"] {
+	position: relative;
+	width: 100%;
+	font-size: 14px;
+	border: none;
+	outline: none;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	padding: 12px 30px;
+	transition: 0.3s ease;
+}
+
+.hero-section #form .btn[type="submit"]:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 0;
+	transition: 0.3s ease;
+}
+
+.hero-section #form .btn[type="submit"]:active:after,
+.hero-section #form .btn[type="submit"]:focus:after,
+.hero-section #form .btn[type="submit"]:hover:after {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+/* ================ 02.01.02.04.Submitt button ends ================= */
+
+/* <<<<<<<<<<<<<<<< 02.01.02.05.Checkboxes (iCheck plugin) >>>>>>>>>>>>>>>> */
+.hero-section #form ul.checkboxes {
+	list-style-type: none;
+	color: #fff;
+	margin-bottom: 0;
+	padding: 0;
+}
+
+.hero-section #form ul.checkboxes li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.hero-section #form ul.checkboxes li label {
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.hero-section #form ul.checkboxes li label .icheckbox {
+	display: inline-block;
+	position: relative;
+	top: -1px;
+	height: 20px;
+	width: 20px;
+	vertical-align: middle;
+	background-color: rgba(0, 0, 0, 0.3);
+	box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.hero-section #form ul.checkboxes li label .icheckbox:after {
+	content: "\f00c";
+	opacity: 0;
+	position: absolute;
+	left: 5.5px;
+	font-family: 'fontawesome';
+	font-size: 10px;
+	line-height: 20px;
+	transition: 0.3s ease;
+}
+
+.hero-section #form ul.checkboxes li label .icheckbox.checked:after {
+	opacity: 1;
+}
+/* ============ 02.01.02.05.Checkboxes (iCheck plugin) ends ============== */
+
+/* <<<<<<<<<<<< 02.01.02.06.Price slider (noUiSlider plugin) >>>>>>>>>>>>> */
+.ui-slider {
+	min-height: 43px;
+	background-color: transparent;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	margin-top: -2px;
+}
+
+.ui-slider .values {
+	font-size: 10px;
+	color: #fff;
+}
+
+.ui-slider .values span {
+	width: 49%;
+	line-height: 16px;
+}
+
+.ui-slider .values span:first-child {
+	float: left;
+}
+
+.ui-slider .values span:last-child {
+	float: right;
+	text-align: right;
+}
+
+.ui-slider .noUi-base {
+	height: 2px;
+	background-color: rgba(255, 255, 255, 0.15);
+	margin-top: 6px;
+}
+
+.ui-slider .noUi-base .noUi-connect {
+	background-color: #fff;
+	box-shadow: none;
+}
+
+.ui-slider .noUi-base .noUi-handle {
+	width: 10px;
+	height: 10px;
+	top: -4px;
+	left: 0;
+	background-color: #4611a7;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	box-shadow: none;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.ui-slider .noUi-base .noUi-handle:before,
+.ui-slider .noUi-base .noUi-handle:after {
+	display: none;
+}
+
+.ui-slider .noUi-base .noUi-handle:hover {
+	box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.07);
+}
+
+.ui-slider .noUi-base .noUi-handle.noUi-handle-upper {
+	left: -8px;
+}
+/* ========== 02.01.02.06.Price slider (noUiSlider plugin) ends ============ */
+/* =============== 02.01.02.Form Section ends ================== */
+/* =============== 02.01.Hero Section ends ================== */
+
+/* <<<<<<<<< 02.02.Recent Places Section >>>>>>>>>> */
+/* <<<<<<<<< 02.02.01.Section Title >>>>>>>>>>> */
+.block {
+	position: relative;
+	padding: 30px 0;
+}
+
+.center {
+	text-align: center;
+}
+
+.section-title {
+	margin: 15px 0 50px;
+}
+
+.section-title h2 {
+	opacity: 0.8;
+	font-size: 36px;
+	font-weight: lighter;
+	color: #4611a7;
+	margin-top: 0;
+}
+
+.section-title h3 {
+	opacity: 0.6;
+	font-size: 16px;
+	font-weight: normal;
+	color: #1f1f1f;
+	margin: 10px 0 15px;
+}
+/* ============ 02.02.01.Section Title ends ============== */
+
+/* <<<<<<<<<<<< 02.02.02.Items Section >>>>>>>>>>> */
+.item .ribbon {
+	opacity: 0;
+	position: absolute;
+	z-index: 1;
+	top: -6px;
+	right: -6px;
+	font-size: 11px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: #4611a7;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	padding: 5px;
+}
+
+.item .ribbon.active {
+	opacity: 1;
+}
+
+.item .ribbon:before {
+	content: '';
+	position: absolute;
+	z-index: 1;
+	width: 0;
+	height: 0;
+	bottom: -6px;
+	right: 0;
+	border-style: solid;
+	border-width: 6px 6px 0 0;
+	border-color: rgba(0, 0, 0, 0.4) transparent transparent transparent;
+}
+
+.item .ribbon:after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	bottom: -6px;
+	right: 0;
+	border-style: solid;
+	border-width: 6px 6px 0 0;
+	border-color: #4611a7 transparent transparent transparent;
+}
+
+.item > a .description .info {
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.item .additional-info {
+	position: relative;
+	background-color: #fafafa;
+	padding: 15px 20px;
+}
+
+.item .additional-info .check-circle {
+	opacity: 0;
+	position: absolute;
+	z-index: 1;
+	width: 30px;
+	height: 30px;
+	top: -15px;
+	left: 20px;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 50%;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.item .additional-info .check-circle.active {
+	opacity: 1;
+}
+
+.item .additional-info .check-circle i {
+	font-size: 12px;
+	line-height: 28px;
+	color: #4611a7;
+}
+
+.item .additional-info .stars {
+	margin-right: 5px;
+}
+
+.item .additional-info .stars i {
+	opacity: 0.1;
+	font-size: 11px;
+	color: #000;
+	margin-right: 1px;
+}
+
+.item .additional-info .stars i.active {
+	opacity: 1;
+	color: #4611a7;
+}
+
+.item .additional-info .reviews {
+	margin-left: 2px;
+}
+/* ============ 02.02.02.Items Section ends ============ */
+
+/* <<<<<<<<<<<< 02.02.03."View all" button >>>>>>>>>>>>>> */
+.btn.arrow {
+	position: relative;
+	color: #4611a7;
+	background-color: transparent;
+	border-color: rgba(0, 0, 0, 0.2);
+	box-shadow: none;
+	padding-right: 30px;
+}
+
+.btn.arrow:hover {
+	background-color: transparent;
+	border-color: rgba(0, 0, 0, 0.3);
+}
+
+.btn.arrow:hover:after {
+	background-color: transparent;
+}
+
+.btn.arrow i {
+	opacity: 0.6;
+	height: 14px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 10px;
+	font-size: 14px;
+	line-height: 1;
+	margin: auto;
+}
+/* ============= 02.02.03."View all" button ends =============== */
+/* ============= 02.02.Recent Places Section ends ============== */
+
+/* <<<<<<<<<<<<< 02.03.Category Section >>>>>>>>>>>> */
+.categories-list .list-item {
+	margin-bottom: 60px;
+}
+
+.categories-list .list-item .title {
+	margin-bottom: 10px;
+}
+
+.categories-list .list-item .title .icon {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	color: #fff;
+	background-color: #4611a7;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.categories-list .list-item .title .icon i {
+	font-size: 14px;
+	line-height: 38px;
+}
+
+.categories-list .list-item .title h3 {
+	display: inline-block;
+	font-size: 18px;
+	font-weight: normal;
+	margin: 10px 0 15px;
+}
+
+.categories-list .list-item ul {
+	list-style-type: none;
+	padding-left: 52px;
+}
+
+.categories-list .list-item ul li a {
+	opacity: 0.6;
+	display: inline-block;
+	color: #000;
+	padding: 2px 0;
+}
+
+.categories-list .list-item ul li a:hover {
+	opacity: 1;
+}
+
+.categories-list .list-item ul li .count {
+	opacity: 0.8;
+	display: inline-block;
+	float: right;
+	position: relative;
+	top: 7px;
+	font-size: 10px;
+}
+/* ============= 02.03.Category Section ends ============= */
+
+/* <<<<<<<<<<<<< 02.04.Subscribe Section >>>>>>>>>>>>>> */
+.big-padding {
+	padding: 60px 0;
+}
+
+.bg-color-light {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.vertical-aligned-elements {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.vertical-aligned-elements .element {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.width-50 {
+	width: 50%;
+}
+
+.vertical-aligned-elements .element h3 {
+	font-size: 18px;
+	font-weight: lighter;
+	color: #4611a7;
+	margin: 10px 5px 15px 0;
+}
+
+.vertical-aligned-elements .element form {
+	position: relative;
+}
+
+.vertical-aligned-elements .element form input {
+	height: inherit;
+	background-color: transparent;
+	border-radius: 0;
+	border: none;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+	outline: none;
+	box-shadow: none;
+	padding: 12px 0;
+	transition: 0.3s ease;
+}
+
+.vertical-aligned-elements .element form input:active,
+.vertical-aligned-elements .element form input:focus {
+	padding-left: 12px;
+}
+
+/* <<<<<<<<< Placeholder color setup >>>>>>>>>> */
+.vertical-aligned-elements .element form ::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.vertical-aligned-elements .element form ::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+.vertical-aligned-elements .element form :-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+/* ========= Placeholder color setup ends ========== */
+
+.vertical-aligned-elements .element form button {
+	background-color: transparent;
+	border-radius: 0;
+	border-color: transparent;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+	box-shadow: none;
+	margin-top: -2px;
+	padding: 14px 12px 13px;
+	transition: 0.3s ease;
+}
+
+.vertical-aligned-elements .element form button:hover,
+.vertical-aligned-elements .element form button:focus,
+.vertical-aligned-elements .element form button:active,
+.vertical-aligned-elements .element form button:active:focus,
+.vertical-aligned-elements .element form button:active:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+	border-color: rgba(0, 0, 0, 0.01);
+	outline: none;
+}
+/* =============== 02.04.Subscribe Section ends ================ */
+
+/* <<<<<<<<<<<<<<< 02.05.Gallery Section >>>>>>>>>>>>>>> */
+/* <<<<<<<<<<<<<<< 02.05.01.Section Title and Gallery Navigation >>>>>>>>>>>>>>> */
+.bg-color-dark {
+	color: #fff;
+	background-color: #4611a7;
+}
+
+.bg-color-dark .section-title h2 {
+	color: #fff;
+}
+
+.align-right {
+	text-align: right;
+}
+
+#gallery-nav {
+	display: inline-block;
+	position: relative;
+	height: 27px;
+	width: 75px;
+	vertical-align: middle;
+	margin-left: 15px;
+}
+
+#gallery-nav #slick-prev,
+#gallery-nav #slick-next {
+	display: inline-block;
+	position: absolute;
+	top: -5px;
+	right: 0;
+	width: 36px;
+	text-align: center;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	padding: 3px 4px;
+	margin-left: 2px;
+	cursor: pointer;
+}
+
+#gallery-nav #slick-prev {
+	right: 40px;
+}
+
+#gallery-nav #slick-prev i,
+#gallery-nav #slick-next i {
+	font-size: 24px;
+}
+/* ================ 02.05.01.Section Title and Gallery Navigation ends ============== */
+
+/* <<<<<<<<<<<<<<<< 02.05.02.Gallery Items Section (slick plugin) >>>>>>>>>>>>>>>>> */
+.gallery-item-wrapper:focus {
+	outline: none;
+}
+
+.gallery-slider .item {
+	width: 260px;
+	margin-left: 10px;
+}
+
+.gallery-slider .item > a .description .label {
+	background-color: transparent;
+	border: 1px solid #fff;
+}
+
+.gallery-slider .item .additional-info {
+	background-color: #4611a7;
+}
+
+.gallery-slider .item .additional-info:after {
+	content: "";
+	position: absolute;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	transition: 0.3s ease;
+}
+
+.gallery-slider .item .additional-info .rating {
+	position: relative;
+	z-index: 1;
+}
+
+.gallery-slider .item .additional-info .stars i {
+	color: #fff;
+}
+
+.gallery-slider .item .controls-more {
+	z-index: 1;
+}
+
+.gallery-slider .item .controls-more i {
+	color: #fff;
+}
+
+.gallery-slider .item .controls-more ul li a:hover {
+	color: #fff;
+}
+
+ul.slick-dots {
+	list-style-type: none;
+	text-align: center;
+	margin: 5px 0 0;
+	padding: 0;
+}
+
+ul.slick-dots li {
+	opacity: 0.3;
+	display: inline-block;
+	transition: 0.3s ease;
+}
+
+ul.slick-dots li.slick-active {
+	opacity: 1;
+}
+
+ul.slick-dots li span {
+	display: block;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: #fff;
+	margin: 3px 5px;
+	cursor: pointer;
+}
+/* ================= 02.05.02.Gallery Items Section (slick plugin) ends ================= */
+/* ================= 02.05.Gallery Section ends ================= */
+
+/* <<<<<<<<<<<<<<<<< 02.06.Events Section >>>>>>>>>>>>>>> */
+.event {
+	position: relative;
+	margin-bottom: 30px;
+	padding: 10px 0 0 70px;
+}
+
+.event .date {
+	position: absolute;
+	left: 0;
+	width: 50px;
+	text-align: center;
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
+	padding: 5px 3px 4px;
+}
+
+.event .date:before {
+	content: "";
+	position: absolute;
+	top: -3px;
+	left: 4px;
+	width: 37px;
+	height: 6px;
+	background-image: url("../img/calendar-spring.png");
+}
+
+.event .date .day {
+	opacity: 0.6;
+	display: block;
+	font-size: 20px;
+	margin-bottom: -3px;
+}
+
+.event .date .month {
+	opacity: 0.6;
+	display: block;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.event h4 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.event .time {
+	opacity: 0.5;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 12px;
+}
+
+.event .time i {
+	margin-right: 8px;
+}
+
+.event p {
+	opacity: 0.65;
+	line-height: 18px;
+}
+
+.event > a {
+	font-size: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #1f1f1f;
+}
+
+.event > a i {
+	opacity: 0.6;
+	position: relative;
+	bottom: -1px;
+	font-size: 13px;
+	margin-left: 2px;
+}
+/* ================= 02.06.Events Section ends ================= */
+
+/* <<<<<<<<<<<<<<<<< 02.07.Testimonials Section (slick plugin) >>>>>>>>>>>>>>>>>>*/
+.testimonials-slider {
+	position: relative;
+	text-align: center;
+	background-color: #fafafa;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	padding: 0;
+}
+
+.testimonials-slider .slick-list {
+	position: relative;
+	top: -30px;
+}
+
+.testimonial-item-wrapper blockquote {
+	position: relative;
+	border: none;
+	margin: 0;
+	padding: 10px 18px;
+}
+
+.testimonial-item-wrapper blockquote .image-wrapper {
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	left: 2px;
+	width: 95px;
+	height: 95px;
+	border-radius: 50%;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	margin: 0 auto 32px;
+}
+
+.testimonial-item-wrapper blockquote .image-wrapper .image {
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.testimonial-item-wrapper blockquote h3 {
+	font-size: 18px;
+	font-weight: normal;
+	color: #4611a7;
+	margin: 10px 0 0;
+}
+
+.testimonial-item-wrapper blockquote h4 {
+	opacity: 0.5;
+	font-size: 12px;
+	font-weight: bold;
+	margin-top: 3px;
+}
+
+.testimonial-item-wrapper blockquote p {
+	opacity: 0.65;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 18px;
+}
+
+.testimonials-slider ul.slick-dots {
+	position: relative;
+	top: -30px;
+}
+
+.testimonials-slider ul.slick-dots li span {
+	background-color: #000;
+}
+/* =============== 02.07.Testimonials Section (slick plugin) ends ================== */
+
+/* <<<<<<<<<<<<<<< 02.08.Blog Section >>>>>>>>>>>>>>>> */
+.text-element {
+	margin-bottom: 30px;
+}
+
+.text-element h4 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.text-element .date {
+	opacity: 0.5;
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 12px;
+}
+
+.text-element p {
+	opacity: 0.65;
+	line-height: 18px;
+}
+
+.text-element > a i {
+	opacity: 0.6;
+}
+/* =============== 02.08.Blog Section ends ================ */
+
+/* <<<<<<<<<<<<<<< 02.09.Logo Section >>>>>>>>>>>>>>>> */
+.logo-wrapper {
+	display: table;
+	width: 100%;
+}
+
+.logo-wrapper .logo {
+	display: table-cell;
+	text-align: center;
+}
+
+.logo-wrapper .logo a {
+	opacity: 0.5;
+}
+/* ================ 02.09.Logo Section ends ================ */
+/* ================ 02.Page-content Section ends ================ */
+
+/* <<<<<<<<<<<<<<<< 03.Page-footer Section >>>>>>>>>>>>>>>> */
+.footer-wrapper {
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+	margin-top: 30px;
+}
+
+/* <<<<<<<<<<<<<< 03.01.Social networks Section >>>>>>>>>>>>> */
+.footer-wrapper .block:before {
+	opacity: 0.5;
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-image: url('../img/footer-bg.png');
+	background-size: cover;
+}
+
+.footer-wrapper .element p {
+	line-height: 18px;
+	color: #898989;
+	margin-bottom: 0;
+}
+
+.footer-wrapper .element .social-net {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	text-align: center;
+	line-height: 31px;
+	border: 2px solid rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
+	color: #4611a7;
+	margin: 0 1px;
+}
+
+.footer-wrapper .element .social-net:hover {
+	border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+/* ============= 03.01.Social networks Section ends ============== */
+
+/* <<<<<<<<<<<<< 03.02.Footer navigation Section >>>>>>>>>>>>>> */
+.footer-wrapper .footer-navigation {
+	font-size: 12px;
+	color: #fff;
+	background-color: #4611a7;
+	padding: 8px 0;
+}
+
+.footer-wrapper .footer-navigation a {
+	color: #fff;
+	margin: 0 3px;
+}
+/* ============= 03.02.Footer navigation Section ends ============== */
+/* ============= 03.Page-footer Section ends =============== */
+
+/* <<<<<<<<<<<<<<<< 04.Media queries >>>>>>>>>>>>>>>>>>> */
+@media screen and (max-width: 1199px) {
+
+/* 02.01.02.04.Submitt button */
+	.hero-section #form .btn[type="submit"] i {
+		margin-left: -5px;
+	}
+
+/* 02.03.Category Section */
+	.categories-list .list-item .title h3 {
+		font-size: 17px;
+	}
+
+/* 02.07.Testimonials Section */
+	.block.rated-items .section-title h2 {
+		font-size: 35px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+
+/* 02.01.02.04.Submitt button */
+	.hero-section #form .btn[type="submit"] {
+		padding: 12px 0;
+	}
+	.hero-section #form .btn[type="submit"] i {
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+	
+/* 02.03.Category Section */
+	.categories-list .list-item .title .icon {
+		width: 30px;
+		height: 30px;
+		margin-right: 5px;
+	}
+	.categories-list .list-item .title .icon i {
+		font-size: 10px;
+		line-height: 30px;
+	}
+	.categories-list .list-item .title h3 {
+		font-size: 13px;
+	}
+	.categories-list .list-item ul {
+		padding-left: 38px;
+	}
+	.categories-list .list-item ul li a {
+		font-size: 12px;
+	}
+
+/* 02.07.Testimonials Section */
+	.block.rated-items .section-title h2 {
+		font-size: 26px;
+	}
+}
+
+@media screen and (max-width: 898px) {
+
+/* 01.Page-header Section */
+	#page-header .left img {
+		/* In order to shrink when it needs */
+		max-width: 100%;
+	}
+	#page-header .right {
+		padding-right: 40px;
+	}
+
+/* 01.03.Add listing button */
+	#page-header .right .btn.btn-primary.btn-rounded {
+		padding: 3px 7px;
+	}
+	#page-header .right .btn.btn-primary.btn-rounded i {
+		margin-right: 0;
+	}
+	.btn.btn-primary.btn-rounded span {
+		display: none;
+	}
+
+/* 01.04. Button - Toggle primary-nav */
+	#page-header .right .nav-btn {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 767px) {
+
+/* 02.01.02.Form Section */
+	.hero-section #form {
+		position: relative;
+		top: 0;
+		height: auto;
+		margin-bottom: 20px;
+	}
+	.hero-section #form form {
+		bottom: 0;
+		box-shadow: none;
+		margin-top: 10px;
+		padding: 25px;
+		transform: translateY(0%);
+	}
+	.hero-section #form ul.checkboxes li {
+		width: 49%;
+		margin-right: 0;
+	}
+
+/* 02.05.Gallery Section */
+	.invisible-on-mobile {
+		display: none;
+	}
+}
+/* =============== 04.Media queries ends =============== */
