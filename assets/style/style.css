@@ -1229,7 +1229,7 @@ body.nav-btn-only .mega-menu-parent .btn.btn-default.btn-framed:hover {
 
 .hero-section #form .container,
 .hero-section #form .container .row  {
-	height: inherit;
+	height: auto;
 }
 .hero-section #form .container .row > [class*="col-"] {
 	padding-left: 10px;
